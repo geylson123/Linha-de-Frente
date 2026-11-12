@@ -1,0 +1,167 @@
+/* Layout: cabeçalho e placar acima, campo de batalha em canvas 9:14 no centro, botões de toque abaixo. Visual de mapa militar em papel cáqui, fixo (jogo de um só visual). */
+:root {
+  --paper: #e6dfc4;
+  --ink: #272d1e;
+  --muted: #6a6648;
+  --olive: #5d6b3a;
+  --accent: #c4572a;
+  --accent-ink: #ffffff;
+  --panel: #f1ebd3;
+  --panel-edge: #c9bf98;
+  --font-display: "Saira Stencil One", "Impact", "Arial Black", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  padding-block: 16px 28px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.app {
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.tag { color: var(--muted); font-size: 13px; }
+
+.hud { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-width: 0;
+}
+.stat .k {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat .v {
+  display: block;
+  font-weight: 700;
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.pips { display: flex; gap: 4px; align-items: center; height: 26px; }
+.pip { width: 11px; height: 16px; border-radius: 2px; background: var(--olive); border: 2px solid var(--olive); }
+.pip.off { background: transparent; border-color: var(--panel-edge); }
+
+.stage {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background: #6f7447;
+}
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 9 / 14;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(39, 45, 30, 0.62);
+}
+.card {
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 20px 20px 18px;
+  max-width: 310px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-wrap: balance;
+}
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+.card p strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+button.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 12px 18px;
+}
+button.primary:active { transform: translateY(1px); }
+
+.pad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pad button {
+  font-size: 26px;
+  font-weight: 700;
+  padding: 14px 0;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pad button.on { background: var(--ink); color: var(--paper); }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row button { flex: 1 1 0; min-width: 0; font-size: 14px; padding: 9px 10px; }
+.help { margin: 0; color: var(--muted); font-size: 13px; }
+kbd {
+  font-family: var(--font-body);
+  font-size: 12px;
+  border: 1px solid var(--panel-edge);
+  border-bottom-width: 2px;
+  background: var(--panel);
+  border-radius: 4px;
+  padding: 0 5px;
+}
+[hidden] { display: none !important; }
