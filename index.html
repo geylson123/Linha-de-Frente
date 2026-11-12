@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Linha de Frente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Linha de Frente</h1>
+    <span class="tag">Segure a posição.</span>
+  </header>
+
+  <section class="hud" aria-label="Placar">
+    <div class="stat"><span class="k">Pontos</span><span class="v" id="sScore">0</span></div>
+    <div class="stat"><span class="k">Onda</span><span class="v" id="sWave">1</span></div>
+    <div class="stat"><span class="k">Recorde</span><span class="v" id="sBest">0</span></div>
+    <div class="stat"><span class="k">Casco</span><span class="pips" id="sArmor" aria-live="polite"></span></div>
+  </section>
+
+  <div class="stage">
+    <canvas id="game" aria-label="Campo de batalha"></canvas>
+    <div class="overlay" id="overlay">
+      <div class="card">
+        <h2 id="ovTitle">Linha de Frente</h2>
+        <p id="ovText">Infantaria, blindados e helicópteros avançam em ondas. Seu tanque atira sozinho: você só guia.</p>
+        <button class="primary" id="ovBtn" type="button">Entrar em combate</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pad" aria-label="Controles de toque">
+    <button type="button" id="btnL" aria-label="Mover para a esquerda">&larr;</button>
+    <button type="button" id="btnR" aria-label="Mover para a direita">&rarr;</button>
+  </div>
+
+  <div class="row">
+    <button type="button" id="btnPause">Pausar</button>
+    <button type="button" id="btnSound">Som: ligado</button>
+  </div>
+
+  <p class="help">Tiro automático. Guie com <kbd>&larr;</kbd> <kbd>&rarr;</kbd> ou <kbd>A</kbd> <kbd>D</kbd>, ou arraste o dedo ou o mouse pela pista. <kbd>Espaço</kbd> pausa. Caixas: R conserta o casco, 2 dá tiro duplo, F aumenta a cadência.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
